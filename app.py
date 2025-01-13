@@ -2,10 +2,9 @@ from flask import Flask, jsonify
 from models import db
 from queries import get_users_last_30_days, top_3_products_by_purchase, revenue_by_category, transaction_summaries, users_exceeding_500, remaining_stock
 
-# Initialize the Flask application
 app = Flask(__name__)
 
-# Set up the database URI (replace with your actual PostgreSQL credentials)
+# postgress connection
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql+psycopg2://postgres:Post%40123@localhost:5432/todos"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)

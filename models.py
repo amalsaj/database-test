@@ -3,7 +3,7 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
-
+# user table
 class User(db.Model):
     __tablename__ = 'user'
     
@@ -12,6 +12,7 @@ class User(db.Model):
     email = db.Column(db.String(100), unique=True, nullable=False)
     registration_date = db.Column(db.DateTime, default=datetime.utcnow)
 
+# product table
 class Product(db.Model):
     __tablename__ = 'product'
 
@@ -21,6 +22,7 @@ class Product(db.Model):
     price = db.Column(db.Numeric(10, 2), nullable=False)
     stock = db.Column(db.Integer, nullable=False)
 
+# transaction table
 class Transaction(db.Model):
     __tablename__ = 'transaction'
 
@@ -29,6 +31,7 @@ class Transaction(db.Model):
     date = db.Column(db.DateTime, default=datetime.utcnow)
     user = db.relationship('User', backref=db.backref('transactions', lazy=True))
 
+# transaction details table
 class TransactionDetail(db.Model):
     __tablename__ = 'transaction_detail'
 
